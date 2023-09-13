@@ -1,0 +1,525 @@
+﻿-- Povoamento da tabela Autor
+
+
+INSERT INTO Autor (ID_autor, Nome, nacionalidade)
+VALUES
+    (101, 'Artur', 'Brasil');
+
+
+INSERT INTO Autor (ID_autor, Nome, nacionalidade)
+VALUES
+    (202, 'Bruna', 'Chile');
+
+
+INSERT INTO Autor (ID_autor, Nome, nacionalidade)
+VALUES
+    (303, 'Carlos', 'Espanha');
+
+
+INSERT INTO Autor (ID_autor, Nome, nacionalidade)
+VALUES
+    (404, 'Danilo', 'Brasil');
+
+
+INSERT INTO Autor (ID_autor, Nome, nacionalidade)
+VALUES
+    (505, 'Ellen', 'Canada');
+
+
+INSERT INTO Autor (ID_autor, Nome, nacionalidade)
+VALUES
+    (606, 'Fabio', 'Chile');
+
+
+INSERT INTO Autor (ID_autor, Nome, nacionalidade)
+VALUES
+    (707, 'Gabriela', 'Brasil');
+
+
+INSERT INTO Autor (ID_autor, Nome, nacionalidade)
+VALUES
+    (808, 'Dante', 'França');
+
+
+
+
+-- Povoamento da tabela Premio
+
+
+INSERT INTO Premio (ID_premio, Nome_premio) 
+VALUES 
+    ('P1', 'Premio Brasileiro de Literatura');
+
+
+INSERT INTO Premio (ID_premio, Nome_premio) 
+VALUES 
+    ('P2', 'Premio Academia de Letras');
+
+
+INSERT INTO Premio (ID_premio, Nome_premio) 
+VALUES 
+    ('P3', 'Premio Butantan');
+
+
+
+
+
+
+
+
+-- Povoamento da tabela Editora
+
+
+INSERT INTO Editora (CNPJ, Nome) 
+VALUES 
+    ('11100011100011', 'Editora Alpha');
+
+
+INSERT INTO Editora (CNPJ, Nome) 
+VALUES 
+    ('22200022200022', 'Editora Beta');
+
+
+INSERT INTO Editora (CNPJ, Nome) 
+VALUES 
+    ('33300033300033', 'Editora Charlie');
+
+
+
+
+-- Povoamento da tabela Livro
+
+
+-- Livro 1
+INSERT INTO Livro (Codigo, Edicao, Titulo, genero, CNPJ_editora, idioma)
+VALUES (1, 1, 'O Senhor dos Aneis', 'Fantasia', '11100011100011', 'Portugues');
+
+
+-- Livro 2
+INSERT INTO Livro (Codigo, Edicao, Titulo, genero, CNPJ_editora, idioma)
+VALUES (2, 2, 'Dom Casmurro', 'Romance', '22200022200022', 'Portugues');
+
+
+-- Livro 3
+INSERT INTO Livro (Codigo, Edicao, Titulo, genero, CNPJ_editora, idioma)
+VALUES (3, 1, 'Math For Dummies', 'Didatico', '33300033300033', 'Ingles');
+
+
+-- Livro 4
+INSERT INTO Livro (Codigo, Edicao, Titulo, genero, CNPJ_editora, idioma)
+VALUES (4, 3, 'Twisted Games', 'Romance', '11100011100011', 'Ingles');
+
+
+-- Livro 5
+INSERT INTO Livro (Codigo, Edicao, Titulo, genero, CNPJ_editora, idioma)
+VALUES (5, 1, 'O Pequeno Principe', 'Fantasia', '22200022200022', 'Portugues');
+
+
+-- Livro 6
+INSERT INTO Livro (Codigo, Edicao, Titulo, genero, CNPJ_editora, idioma)
+VALUES (6, 2, 'La Casa de Papel', 'Acao', '33300033300033', 'Espanhol');
+
+
+-- Livro 7
+INSERT INTO Livro (Codigo, Edicao, Titulo, genero, CNPJ_editora, idioma)
+VALUES (7, 1, 'Crime y Castigo', 'Romance', '11100011100011', 'Espanhol');
+
+
+-- Livro 8 (Sem editora)
+INSERT INTO Livro (Codigo, Edicao, Titulo, genero, CNPJ_editora, idioma)
+VALUES (8, 1, 'Die Verwandlung', 'Acao', NULL, 'Alemao');
+
+
+
+
+
+
+-- Livro 9
+INSERT INTO Livro (Codigo, Edicao, Titulo, genero, CNPJ_editora, idioma)
+VALUES (9, 1, 'Introdução à Física Moderna', 'Didatico', '22200022200022', 'Portugues');
+
+
+-- Livro 10
+INSERT INTO Livro (Codigo, Edicao, Titulo, genero, CNPJ_editora, idioma)
+VALUES (10, 2, 'El Alquimista', 'Fantasia', '33300033300033', 'Espanhol');
+
+
+-- Livro 11 (Sem editora)
+INSERT INTO Livro (Codigo, Edicao, Titulo, genero, CNPJ_editora, idioma)
+VALUES (11, 1, 'Smart Investor', 'Financas', NULL, 'Ingles');
+
+
+-- Livro 12
+INSERT INTO Livro (Codigo, Edicao, Titulo, genero, CNPJ_editora, idioma)
+VALUES (12, 1, 'O Hobbit', 'Fantasia', '11100011100011', 'Portugues');
+
+
+-- Livro 13
+INSERT INTO Livro (Codigo, Edicao, Titulo, genero, CNPJ_editora, idioma)
+VALUES (13, 1, 'Diario de um banana', 'Fantasia', '11100011100011', 'Portugues');
+
+
+
+
+
+
+-- Povoamento da tabela Escreve
+
+
+
+
+-- Livro 1
+INSERT INTO Escreve (ID_autor, Codigo, ID_premio)
+VALUES (202, 1, 'P1');
+
+
+-- Livro 2
+INSERT INTO Escreve (ID_autor, Codigo, ID_premio)
+VALUES (202, 2, NULL);
+
+
+-- Livro 3
+INSERT INTO Escreve (ID_autor, Codigo, ID_premio)
+VALUES (101, 3, NULL);
+
+
+-- Livro 4
+INSERT INTO Escreve (ID_autor, Codigo, ID_premio)
+VALUES (303, 4, 'P3' );
+
+
+-- Livro 5
+INSERT INTO Escreve (ID_autor, Codigo, ID_premio)
+VALUES (303, 5, 'P2');
+
+
+
+
+-- Livro 6
+INSERT INTO Escreve (ID_autor, Codigo, ID_premio)
+VALUES (404, 6, 'P2');
+
+
+
+
+-- Livro 7
+INSERT INTO Escreve (ID_autor, Codigo, ID_premio)
+VALUES (404, 7, NULL);
+
+
+-- Livro 8
+INSERT INTO Escreve (ID_autor, Codigo, ID_premio)
+VALUES (404, 8, 'P3');
+
+
+-- Livro 9
+INSERT INTO Escreve (ID_autor, Codigo, ID_premio)
+VALUES (606, 9, NULL);
+
+
+-- Livro 10
+INSERT INTO Escreve (ID_autor, Codigo, ID_premio)
+VALUES (606, 10, 'P1');
+
+
+-- Livro 11
+INSERT INTO Escreve (ID_autor, Codigo, ID_premio)
+VALUES (101, 11, 'P3');
+
+
+-- Livro 12
+INSERT INTO Escreve (ID_autor, Codigo, ID_premio)
+VALUES (303, 12, 'P1');
+
+
+-- Livro 13
+INSERT INTO Escreve (ID_autor, Codigo, ID_premio)
+VALUES (808, 13, 'P1');
+
+
+
+
+-- Povoamento da tabela Livraria
+
+
+-- Livraria 1
+INSERT INTO Livraria (CNPJ, endereco, Nome, Nome_dono)
+VALUES ('77777777777777', 'Rua das Livrarias, 123', 'Livraria Atual', 'Ana');
+
+
+-- Livraria 2
+INSERT INTO Livraria (CNPJ, endereco, Nome, Nome_dono)
+VALUES ('88888888888888', 'Avenida dos Livros, 456', 'Livraria Boa Vista', 'Beto');
+
+
+-- Livraria 3
+INSERT INTO Livraria (CNPJ, endereco, Nome, Nome_dono)
+VALUES ('99999999999999', 'Praça da Leitura, 789', 'Livraria Cultura', 'Carlos');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- Povoamento da tabela Estoque
+
+
+-- Estoque na Livraria 1
+INSERT INTO Estoque (CNPJ_livraria, Codigo, quantidade)
+VALUES ('77777777777777', 1, 50);
+
+
+INSERT INTO Estoque (CNPJ_livraria, Codigo, quantidade)
+VALUES ('77777777777777', 2, 30);
+
+
+INSERT INTO Estoque (CNPJ_livraria, Codigo, quantidade)
+VALUES ('77777777777777', 5, 20);
+
+
+-- Estoque na Livraria 2
+INSERT INTO Estoque (CNPJ_livraria, Codigo, quantidade)
+VALUES ('88888888888888', 3, 40);
+
+
+INSERT INTO Estoque (CNPJ_livraria, Codigo, quantidade)
+VALUES ('88888888888888', 4, 25);
+
+
+INSERT INTO Estoque (CNPJ_livraria, Codigo, quantidade)
+VALUES ('88888888888888', 6, 15);
+
+
+-- Estoque na Livraria 3
+INSERT INTO Estoque (CNPJ_livraria, Codigo, quantidade)
+VALUES ('99999999999999', 1, 60);
+
+
+INSERT INTO Estoque (CNPJ_livraria, Codigo, quantidade)
+VALUES ('99999999999999', 2, 35);
+
+
+INSERT INTO Estoque (CNPJ_livraria, Codigo, quantidade)
+VALUES ('99999999999999', 7, 10);
+
+
+
+
+-- Povoamento da tabela Funcionario
+
+
+-- Funcionários na Livraria 1
+INSERT INTO Funcionario (func_CPF, func_nome, CNPJ_livraria, chefe)
+VALUES ('11111111111', 'Josef Chefe 1', '77777777777777', NULL);
+
+
+INSERT INTO Funcionario (func_CPF, func_nome, CNPJ_livraria, chefe)
+VALUES ('11111111112', 'Fabio Estag 1', '77777777777777', '11111111111');
+
+
+-- Funcionários na Livraria 2
+INSERT INTO Funcionario (func_CPF, func_nome, CNPJ_livraria, chefe)
+VALUES ('22222222221', 'Eduardo Chefe 2', '88888888888888', NULL);
+
+
+INSERT INTO Funcionario (func_CPF, func_nome, CNPJ_livraria, chefe)
+VALUES ('22222222222', 'Lucio Estag 2', '88888888888888', '22222222221');
+
+
+-- Funcionários na Livraria 3
+INSERT INTO Funcionario (func_CPF, func_nome, CNPJ_livraria, chefe)
+VALUES ('33333333331', 'Marco Chefe 3', '99999999999999', NULL);
+
+
+INSERT INTO Funcionario (func_CPF, func_nome, CNPJ_livraria, chefe)
+VALUES ('33333333332', 'Leo Estag 3', '99999999999999', '33333333331');
+
+
+-- Povoamento da tabela Cliente
+
+
+-- Cliente 1
+INSERT INTO Cliente (ID_cliente, end_rua, end_bairro, end_numero)
+VALUES (1, 'Rua Principal', 'Centro', 121);
+
+
+-- Cliente 2
+INSERT INTO Cliente (ID_cliente, end_rua, end_bairro, end_numero)
+VALUES (2, 'Avenida da Amizade', 'Bairro Alegre', 253);
+
+
+-- Cliente 3
+INSERT INTO Cliente (ID_cliente, end_rua, end_bairro, end_numero)
+VALUES (3, 'Praça da Liberdade', 'Liberdade', 319);
+
+
+-- Cliente 4
+INSERT INTO Cliente (ID_cliente, end_rua, end_bairro, end_numero)
+VALUES (4, 'Praça de Casa Forte', 'Casa Forte', 421);
+
+
+-- Cliente 5
+INSERT INTO Cliente (ID_cliente, end_rua, end_bairro, end_numero)
+VALUES (5, 'Rua Reginaldo Rossi', 'Piedade', 516);
+
+
+-- Cliente 6
+INSERT INTO Cliente (ID_cliente, end_rua, end_bairro, end_numero)
+VALUES (6, 'Rua Ambrozina', 'Casa Forte', 316);
+
+
+
+
+-- Povoamento da tabela Email
+
+
+-- E-mails do Cliente 1
+INSERT INTO Email (ID_cliente, email)
+VALUES (1, 'cliente1@icloud.com');
+
+
+INSERT INTO Email (ID_cliente, email)
+VALUES (1, 'cliente1@gmail.com');
+
+
+-- E-mails do Cliente 2
+INSERT INTO Email (ID_cliente, email)
+VALUES (2, 'cliente2@yahoo.br');
+
+
+INSERT INTO Email (ID_cliente, email)
+VALUES (2, 'cliente2@bing.com');
+
+
+-- E-mails do Cliente 3
+INSERT INTO Email (ID_cliente, email)
+VALUES (3, 'cliente3@atendimento.co');
+
+
+INSERT INTO Email (ID_cliente, email)
+VALUES (3, 'cliente3@financeiro.co');
+
+
+
+
+-- E-mails do Cliente 4
+INSERT INTO Email (ID_cliente, email)
+VALUES (4, 'cliente4@empresa.co');
+
+
+
+
+-- Povoamento da tabela Venda
+
+
+-- Venda 1
+INSERT INTO Venda (ID_cliente, Codigo, CPF_vendedor, Data_venda)
+VALUES (1, 10, '11111111112',TIMESTAMP' 2023-09-12 14:24:21');
+
+
+-- Venda 2
+INSERT INTO Venda (ID_cliente, Codigo, CPF_vendedor, Data_venda)
+VALUES (2, 2, '22222222221',TIMESTAMP '2023-07-12 13:14:31');
+
+
+-- Venda 3
+INSERT INTO Venda (ID_cliente, Codigo, CPF_vendedor, Data_venda)
+VALUES (3, 3, '11111111112',TIMESTAMP '2023-09-11 21:02:12');
+
+
+-- Venda 4
+INSERT INTO Venda (ID_cliente, Codigo, CPF_vendedor, Data_venda)
+VALUES (1, 4, '22222222222',TIMESTAMP '2023-09-11 09:10:41');
+
+
+-- Venda 5
+INSERT INTO Venda (ID_cliente, Codigo, CPF_vendedor, Data_venda)
+VALUES (4, 5, '33333333332', TIMESTAMP' 2023-07-12 11:59:59');
+
+
+-- Venda 6
+INSERT INTO Venda (ID_cliente, Codigo, CPF_vendedor, Data_venda)
+VALUES (1, 6, '11111111112',TIMESTAMP '2023-09-10 16:44:29');
+
+
+-- Venda 7
+INSERT INTO Venda (ID_cliente, Codigo, CPF_vendedor, Data_venda)
+VALUES (4, 6, '33333333331', TIMESTAMP' 2023-08-01 12:14:49');
+
+
+-- Venda 8
+INSERT INTO Venda (ID_cliente, Codigo, CPF_vendedor, Data_venda)
+VALUES (2, 6, '11111111112', TIMESTAMP' 2023-08-21 11:11:12');
+
+
+-- Venda 9
+INSERT INTO Venda (ID_cliente, Codigo, CPF_vendedor, Data_venda)
+VALUES (3, 6, '11111111112',TIMESTAMP '2023-08-09 20:43:28');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- Povoamento da tabela PessoaFisica
+
+
+-- Cliente 1 (Pessoa Física)
+INSERT INTO PessoaFisica (ID_cliente, data_nascimento, CPF, Nome)
+VALUES (1, TO_DATE('1990-01-15', 'YYYY-MM-DD'), '12304560789', 'João Silva');
+
+
+
+
+-- Cliente 2 (Pessoa Física)
+INSERT INTO PessoaFisica (ID_cliente, data_nascimento, CPF, Nome)
+VALUES (2, TO_DATE('1985-04-22', 'YYYY-MM-DD'), '12345678999', 'Maria Santos');
+
+
+-- Cliente 5 (Pessoa Física)
+INSERT INTO PessoaFisica (ID_cliente, data_nascimento, CPF, Nome)
+VALUES (5, TO_DATE('1995-07-10', 'YYYY-MM-DD'), '98765432111', 'Pedro Souza');
+
+
+-- Funcionários na Livraria 6
+INSERT INTO PessoaFisica (ID_cliente, data_nascimento, CPF, Nome)
+VALUES (6, TO_DATE('1995-08-10', 'YYYY-MM-DD'), '11111111111', 'Josef Chefe 1');
+
+
+
+
+-- Povoamento da tabela PessoaJuridica
+
+
+-- Cliente 3 (Pessoa Jurídica)
+INSERT INTO PessoaJuridica (ID_cliente, Titulo, CNPJ)
+VALUES (3, 'Empresa Ubaias Jato', '30303030303030');
+
+
+-- Cliente 4 (Pessoa Jurídica)
+INSERT INTO PessoaJuridica (ID_cliente, Titulo, CNPJ)
+VALUES (4, 'Empresa Max Burger', '40404040404040');
