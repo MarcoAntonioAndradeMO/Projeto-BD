@@ -14,5 +14,6 @@
 - MODELO RELACIONAL
 - SQL
 
-  
+## Link para Slide
 
+https://docs.google.com/presentation/d/17V8FNcgQU9EdyBXGAu3D8BFEpmEIgTNiqp1rAfN-Kuk/edit#slide=id.g2440d1e40cc_0_83
