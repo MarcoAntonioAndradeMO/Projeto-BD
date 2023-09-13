@@ -1,0 +1,125 @@
+﻿-- Tabela Autor
+CREATE TABLE Autor (
+    ID_autor INT PRIMARY KEY,
+    Nome VARCHAR(255),
+    nacionalidade VARCHAR(255)
+);
+
+
+-- Tabela Prêmio
+CREATE TABLE Premio (
+    ID_premio VARCHAR(255) PRIMARY KEY,
+    Nome_premio VARCHAR(255)
+);
+
+
+-- Tabela Editora
+CREATE TABLE Editora (
+    CNPJ VARCHAR(14) PRIMARY KEY,
+    Nome VARCHAR(255)
+);
+
+
+-- Tabela Livro
+CREATE TABLE Livro (
+    Codigo INT PRIMARY KEY,
+    Edicao INT,
+    Titulo VARCHAR(255),
+    genero VARCHAR(255),
+    CNPJ_editora VARCHAR(14),
+    idioma VARCHAR(255),
+    FOREIGN KEY (CNPJ_editora) REFERENCES Editora(CNPJ)
+);
+
+
+-- Tabela Escreve
+CREATE TABLE Escreve (
+    ID_autor INT,
+    Codigo INT,
+    ID_premio VARCHAR(255),
+    PRIMARY KEY (ID_autor, Codigo),
+    FOREIGN KEY (ID_autor) REFERENCES Autor(ID_autor),
+    FOREIGN KEY (Codigo) REFERENCES Livro(Codigo),
+    FOREIGN KEY (ID_premio) REFERENCES Premio(ID_premio)
+);
+
+
+-- Tabela Livraria
+CREATE TABLE Livraria (
+    CNPJ VARCHAR(14) PRIMARY KEY,
+    endereco VARCHAR(255),
+    Nome VARCHAR(255),
+    Nome_dono VARCHAR(255)
+);
+
+
+-- Tabela Estoque
+CREATE TABLE Estoque (
+    CNPJ_livraria VARCHAR(14),
+    Codigo INT,
+    quantidade INT,
+    PRIMARY KEY (CNPJ_livraria, Codigo),
+    FOREIGN KEY (CNPJ_livraria) REFERENCES Livraria(CNPJ),
+    FOREIGN KEY (Codigo) REFERENCES Livro(Codigo)
+);
+
+
+-- Tabela Funcionario
+CREATE TABLE Funcionario (
+    func_CPF VARCHAR(11) PRIMARY KEY,
+    func_nome VARCHAR(255),
+    CNPJ_livraria VARCHAR(14)NOT NULL,
+    chefe VARCHAR(11),
+    FOREIGN KEY (CNPJ_livraria) REFERENCES Livraria(CNPJ),
+    FOREIGN KEY (chefe) REFERENCES Funcionario(func_CPF)
+);
+
+
+-- Tabela Cliente
+CREATE TABLE Cliente (
+    ID_cliente INT PRIMARY KEY,
+    end_rua VARCHAR(255),
+    end_bairro VARCHAR(255),
+    end_numero INT
+);
+
+
+-- Tabela E-mail
+CREATE TABLE Email (
+    ID_cliente INT,
+    email VARCHAR(255),
+    PRIMARY KEY (ID_cliente, email),
+    FOREIGN KEY (ID_cliente) REFERENCES Cliente(ID_cliente)
+);
+
+
+-- Tabela Venda
+CREATE TABLE Venda (
+    ID_cliente INT,
+    Codigo INT,
+    CPF_vendedor VARCHAR(11),
+    Data_venda DATE,
+    PRIMARY KEY (ID_cliente, Codigo, CPF_vendedor, Data_venda),
+    FOREIGN KEY (ID_cliente) REFERENCES Cliente(ID_cliente),
+    FOREIGN KEY (Codigo) REFERENCES Livro(Codigo),
+    FOREIGN KEY (CPF_vendedor) REFERENCES Funcionario(func_CPF)
+);
+
+
+-- Tabela Pessoa Física
+CREATE TABLE PessoaFisica (
+    ID_cliente INT PRIMARY KEY,
+    data_nascimento DATE,
+    CPF VARCHAR(11),
+    Nome VARCHAR(255),
+    FOREIGN KEY (ID_cliente) REFERENCES Cliente(ID_cliente)
+);
+
+
+-- Tabela Pessoa Jurídica
+CREATE TABLE PessoaJuridica (
+    ID_cliente INT PRIMARY KEY,
+    Titulo VARCHAR(255),
+    CNPJ VARCHAR(14),
+    FOREIGN KEY (ID_cliente) REFERENCES Cliente(ID_cliente)
+);
