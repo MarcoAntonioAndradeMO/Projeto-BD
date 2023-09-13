@@ -1,0 +1,113 @@
+﻿1- Group by/Having - “Projetar os nomes dos autores que escreveram mais de um livro e a quantidade de livros escritos por cada um”
+-- INNER JOIN + GROUP BY/HAVING
+SELECT A.NOME, COUNT(*) AS QUANTIDADE_LIVROS_ESCRITOS
+FROM AUTOR A INNER JOIN ESCREVE E
+ON A.ID_AUTOR = E.ID_AUTOR
+GROUP BY A.NOME
+HAVING COUNT(*) > 1;
+
+
+2- Junção Interna - "Projetar o nome dos escritores e os títulos dos seus livros"
+-- INNER JOIN
+SELECT A.NOME, L.TITULO
+FROM AUTOR A INNER JOIN ESCREVE E
+ON A.ID_AUTOR = E.ID_AUTOR
+INNER JOIN LIVRO L
+ON E.CODIGO = L.CODIGO;
+
+
+3- Junção externa -  "Projetar o titulo de todos os livros publicados e o nome de sua editora (se houver)’’
+-- RIGHT OUTER JOIN + ORDER BY
+SELECT E.NOME, L.TITULO 
+FROM EDITORA E
+RIGHT OUTER JOIN LIVRO L
+ON E.CNPJ = L.CNPJ_editora 
+ORDER BY E.NOME
+
+
+
+
+
+
+
+
+
+
+4- Semi Junção- “Selecione os títulos dos livros que não receberam prêmios”
+-- Semi Junção 
+SELECT L.TITULO 
+FROM LIVRO L 
+WHERE EXISTS 
+(SELECT *         FROM ESCREVE E         WHERE E.CODIGO = L.CODIGO         AND E.ID_PREMIO IS NULL);
+
+
+ -- USANDO IN -- 
+SELECT L.TITULO 
+FROM LIVRO L 
+WHERE L.CODIGO IN (SELECT E.CODIGO
+FROM ESCREVE E
+WHERE E.ID_PREMIO IS NULL);
+
+
+5- Anti-Junção - "Projetar o gênero dos livros que tem prêmio’’
+-- DISCTINCT + ANTI-JUNÇÃO 
+SELECT DISTINCT L.GENERO 
+FROM LIVRO L 
+WHERE NOT EXISTS(SELECT 1
+FROM ESCREVE
+E WHERE E.CODIGO = L.CODIGO
+AND E.ID_PREMIO IS NULL);
+
+
+6- Subconsulta do Tipo Escalar - “Selecione o nome do dono da livraria que tem o maior quantidade de um livro em estoque’’
+SELECT L.NOME_DONO 
+FROM LIVRARIA L 
+JOIN ESTOQUE E 
+ON L.CNPJ = E.CNPJ_LIVRARIA 
+WHERE E.QUANTIDADE = (SELECT MAX(E1.QUANTIDADE)
+         FROM ESTOQUE E1);
+
+
+7- Subconsulta do Tipo Linha - “Projetar o ID dos clientes que compraram o mesmo livro com o mesmo vendedor na data ‘10-SEP-23’ ”
+SELECT ID_CLIENTE 
+FROM VENDA 
+WHERE (CODIGO, CPF_VENDEDOR) = (SELECT CODIGO,CPF_VENDEDOR
+FROM VENDA 
+WHERE DATA_VENDA = '10-SEP-23'); 
+
+
+8- Subconsulta do Tipo Tabela - “Projetar o nome dos livros escritos por autores brasileiros”
+--- INNER JOIN + SUBCONSULTA TIPO TABELA 
+SELECT L.TITULO 
+FROM LIVRO L 
+WHERE L.CODIGO IN (SELECT E.CODIGO 
+FROM ESCREVE E 
+INNER JOIN AUTOR A 
+ON E.ID_AUTOR = A.ID_AUTOR 
+WHERE A.NACIONALIDADE = 'Brasil');
+
+
+8-1. “Projetar o nome e nacionalidade do autores que escreveram mais livros”
+-- Tabela/Escalar/Group by + Having 
+SELECT A.NOME, A.NACIONALIDADE 
+FROM AUTOR A 
+WHERE A.ID_AUTOR IN ( 
+SELECT E.ID_AUTOR 
+FROM ESCREVE E 
+GROUP BY E.ID_AUTOR 
+HAVING COUNT(*) = ( 
+SELECT MAX(LIVROS) FROM ( 
+SELECT COUNT(*) AS LIVROS 
+FROM ESCREVE E2
+GROUP BY E2.ID_AUTOR 
+)
+ )
+ );
+
+
+9- Operação de Conjunto - “Projetar todos os clientes que também são funcionários”
+SELECT NOME, CPF 
+FROM PESSOAFISICA 
+INTERSECT 
+SELECT FUNC_NOME, FUNC_CPF
+FROM FUNCIONARIO;
